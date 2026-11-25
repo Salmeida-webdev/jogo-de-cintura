@@ -7,7 +7,15 @@ export default async function securityHeaders(request: Request, context: { next:
   crypto.getRandomValues(bytes);
   const nonce = btoa(String.fromCharCode(...bytes));
   const html = await response.text();
-  const securedHtml = html.replace(/<script\b(?![^>]*\bnonce\s*=)([^>]*)>/gi, `<script nonce="${nonce}"$1>`);
+  const securedHtml = html.replace(/<script\b[^>]*>/gi, tag => {
+    const source = tag.match(/\bsrc\s*=\s*(["'])([^"']+)\1/i)?.[2];
+    if (!source || /\bnonce\s*=/i.test(tag)) return tag;
+    let scriptUrl: URL;
+    try { scriptUrl = new URL(source, request.url); } catch { return tag; }
+    const pageUrl = new URL(request.url);
+    const isFirstPartyApp = scriptUrl.origin === pageUrl.origin && scriptUrl.pathname === '/app.js';
+    return isFirstPartyApp ? tag.replace(/<script\b/i, `<script nonce="${nonce}"`) : tag;
+  });
   const headers = new Headers(response.headers);
   headers.delete('content-length');
   headers.delete('content-encoding');
