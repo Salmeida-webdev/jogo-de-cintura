@@ -1,0 +1,8 @@
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
+[build]
+  publish = "."
+
+[[edge_functions]]
+  function = "security-headers"
+  path = "/*"

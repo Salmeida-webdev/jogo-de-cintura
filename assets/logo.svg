@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="330" viewBox="0 0 1480 330">
+  <g transform="translate(26 32)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 83 C70 24 144 24 195 83 C226 118 226 168 196 201 C166 234 112 238 76 210" stroke="#193247" stroke-width="26"/>
+    <path d="M22 164 C69 213 142 218 194 164 C227 129 226 78 194 47 C161 16 109 15 74 42" stroke="#B84F32" stroke-width="26"/>
+    <path d="M50 122 C93 80 144 80 183 122" stroke="#D5A246" stroke-width="18"/>
+  </g>
+  <text x="270" y="176" fill="#193247" font-family="Noto Serif, Georgia, serif" font-size="116" font-weight="700" letter-spacing="-5">Jogo de Cintura</text>
+  <text x="278" y="260" fill="#B84F32" font-family="DejaVu Sans, Arial, sans-serif" font-size="35" font-weight="700" letter-spacing="12">IDEIAS EM MOVIMENTO</text>
+</svg>

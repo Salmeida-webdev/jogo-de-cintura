@@ -1,0 +1,8 @@
+name = "jogo-de-cintura-api"
+main = "worker.js"
+compatibility_date = "2026-11-25"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jogo_de_cintura"
+database_id = "aa44fc87-808c-4b46-93a9-c0f68995f6a8"
