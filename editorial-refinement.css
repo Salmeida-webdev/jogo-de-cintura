@@ -24,8 +24,8 @@ body { overflow-x: hidden; background: #fbfaf7; }
 .masthead-label .eyebrow { color: var(--jdc-rust); }
 .issue { border: 1px solid rgba(20,45,59,.17); border-radius: 99px; padding: 8px 13px; background: rgba(255,255,255,.36); font-size: 10px; letter-spacing: .07em; }
 .issue i { display: inline-block; width: 4px; height: 4px; margin: 0 8px 2px; border-radius: 50%; background: var(--jdc-rust); }
-.masthead-title { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(220px,.55fr); align-items: end; gap: clamp(24px,7vw,110px); max-width: 1180px; width: 100%; margin: 35px auto 44px; }
-.masthead-title h1 { max-width: 780px; margin: 0; color: var(--jdc-ink); font: 500 clamp(62px,9.5vw,132px)/.88 var(--serif); letter-spacing: -.075em; }
+.masthead-title { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(220px,.6fr); align-items: end; gap: clamp(24px,5vw,76px); max-width: 1180px; width: 100%; margin: 35px auto 44px; }
+.masthead-title h1 { max-width: 840px; margin: 0; color: var(--jdc-ink); font: 500 clamp(62px,7.4vw,105px)/.91 var(--serif); letter-spacing: -.075em; }
 .masthead-title h1 em { color: var(--jdc-rust); font-weight: 400; }
 .masthead-title p { max-width: 330px; margin: 0 0 9px; padding-left: 19px; border-left: 1px solid var(--jdc-gold); color: #51636a; font: 19px/1.55 var(--serif); }
 .masthead-bottom { display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid rgba(20,45,59,.17); color: #657276; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
