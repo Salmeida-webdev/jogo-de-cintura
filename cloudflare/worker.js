@@ -97,11 +97,16 @@ async function login(request, env) {
   const ipHash = base64url(await hmac(env.SESSION_SECRET, ip));
   const attempts = await env.DB.prepare("SELECT COUNT(*) AS total FROM login_attempts WHERE ip_hash = ? AND created_at > datetime('now', '-15 minutes')").bind(ipHash).first('total');
   if (Number(attempts) >= 8) return json({ error: 'Muitas tentativas. Aguarde 15 minutos e tente novamente.' }, 429);
+  let email = '';
   let password = '';
-  try { password = (await request.json()).password || ''; } catch { return json({ error: 'Envie uma senha válida.' }, 400); }
-  if (!sameSecret(password, env.ADMIN_PASSWORD)) {
+  try {
+    const credentials = await request.json();
+    email = String(credentials.email || '').trim().toLocaleLowerCase('pt-BR');
+    password = String(credentials.password || '');
+  } catch { return json({ error: 'Informe o e-mail e a senha.' }, 400); }
+  if (!sameSecret(email, String(env.ADMIN_EMAIL || '').trim().toLocaleLowerCase('pt-BR')) || !sameSecret(password, env.ADMIN_PASSWORD)) {
     await env.DB.prepare('INSERT INTO login_attempts (ip_hash) VALUES (?)').bind(ipHash).run();
-    return json({ error: 'Senha incorreta. Confira os dados e tente novamente.' }, 401);
+    return json({ error: 'E-mail ou senha incorretos. Confira os dados e tente novamente.' }, 401);
   }
   await env.DB.prepare('DELETE FROM login_attempts WHERE ip_hash = ?').bind(ipHash).run();
   return json({ token: await issueToken(env), expiresIn: SESSION_SECONDS });
